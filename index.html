@@ -80,8 +80,16 @@
   /* escada de níveis */
   .degraus{list-style:none;margin-top:36px;display:grid;gap:12px}
   .degraus li{background:var(--papel);border:3px solid var(--preto);border-radius:10px;
-    padding:16px 20px;display:flex;gap:16px;align-items:baseline}
+    padding:16px 20px;display:flex;gap:16px;align-items:baseline;color:var(--preto)}
   .degraus b{font-family:Georgia,serif;font-size:22px;min-width:34px}
+
+  /* duas colunas: texto + foto */
+  .duascol{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;margin-top:10px}
+  @media(max-width:820px){ .duascol{grid-template-columns:1fr} }
+  .fotoquadro{background:var(--papel);border:3px solid var(--preto);border-radius:14px;
+    box-shadow:8px 8px 0 var(--preto);padding:12px}
+  .fotoquadro img, .fotoquadro svg{display:block;width:100%;height:auto;border-radius:8px}
+  .fotoquadro figcaption{font-size:13px;color:var(--cinza);text-align:center;padding:10px 6px 2px}
   .degraus li:nth-child(1){margin-right:40%}
   .degraus li:nth-child(2){margin-right:32%}
   .degraus li:nth-child(3){margin-right:24%}
@@ -127,8 +135,45 @@
   <div class="molde">
     <span class="rotulo">O que é</span>
     <h2>Aprender deixa de ser obrigação e se torna envolvimento genuíno</h2>
-    <p class="texto">O Hack School é uma <b>metodologia educacional baseada em desafios</b>. Em vez de organizar a aprendizagem apenas em torno de conteúdos a serem transmitidos, ela organiza a aprendizagem em torno de <b>problemas reais a serem resolvidos</b> — da escola, do bairro, da cidade, da vida dos próprios estudantes.</p>
-    <p class="texto">Hackear, aqui, não tem nada a ver com invadir computadores: hackear é encontrar caminhos criativos e não convencionais para resolver um problema. Hackear a escola é abrir novas rotas de aprendizagem dentro dela — tirando o estudante da cadeira de espectador e colocando-o no centro da ação.</p>
+    <div class="duascol">
+      <div>
+        <p class="texto">O Hack School é uma <b>metodologia educacional baseada em desafios</b>. Em vez de organizar a aprendizagem apenas em torno de conteúdos a serem transmitidos, ela organiza a aprendizagem em torno de <b>problemas reais a serem resolvidos</b> — da escola, do bairro, da cidade, da vida dos próprios estudantes.</p>
+        <p class="texto">Hackear, aqui, não tem nada a ver com invadir computadores: hackear é encontrar caminhos criativos e não convencionais para resolver um problema. Hackear a escola é abrir novas rotas de aprendizagem dentro dela — tirando o estudante da cadeira de espectador e colocando-o no centro da ação.</p>
+      </div>
+      <figure class="fotoquadro">
+        <!-- PARA USAR UMA FOTO SUA: apague todo o bloco <svg>...</svg> abaixo e coloque no lugar:
+             <img src="minha-foto.jpg" alt="Estudantes em atividade do Hack School">
+             (suba o arquivo minha-foto.jpg no mesmo repositório do GitHub) -->
+        <svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração: um estudante se levanta e ergue a mão com uma ideia, enquanto colegas observam">
+          <rect width="600" height="440" fill="#FFDE00"/>
+          <rect x="0" y="380" width="600" height="60" fill="#111111"/>
+          <!-- colegas sentados -->
+          <g fill="#111111" opacity="0.35">
+            <circle cx="120" cy="270" r="26"/>
+            <rect x="92" y="300" width="56" height="60" rx="12"/>
+            <rect x="70" y="352" width="100" height="14" rx="4"/>
+            <circle cx="480" cy="270" r="26"/>
+            <rect x="452" y="300" width="56" height="60" rx="12"/>
+            <rect x="430" y="352" width="100" height="14" rx="4"/>
+          </g>
+          <!-- estudante protagonista, de pé, braço erguido -->
+          <g fill="#111111">
+            <circle cx="300" cy="160" r="34"/>
+            <rect x="266" y="200" width="68" height="120" rx="18"/>
+            <rect x="256" y="320" width="26" height="60" rx="8"/>
+            <rect x="318" y="320" width="26" height="60" rx="8"/>
+            <rect x="330" y="120" width="24" height="100" rx="12" transform="rotate(28 342 170)"/>
+          </g>
+          <!-- a ideia -->
+          <g>
+            <circle cx="392" cy="78" r="30" fill="#FFFDF2" stroke="#111111" stroke-width="6"/>
+            <path d="M392 60 v12 M374 78 h12 M398 78 h12 M379 65 l8 8 M405 65 l-8 8" stroke="#111111" stroke-width="5" stroke-linecap="round"/>
+            <rect x="384" y="104" width="16" height="10" rx="3" fill="#111111"/>
+          </g>
+        </svg>
+        <figcaption>O momento Hack School: o estudante levanta, pergunta e constrói.</figcaption>
+      </figure>
+    </div>
     <div class="citacao">
       <p>"Hack School é a metodologia que transforma a escola em um campo de provas da vida real, onde os estudantes, em grupos, usam tudo o que aprenderam para resolver desafios verdadeiros da sua comunidade."</p>
     </div>
