@@ -16,8 +16,12 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
-  body{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--tinta);
-    -webkit-font-smoothing:antialiased}
+  body{
+    font-family:"Inter",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--tinta);
+    -webkit-font-smoothing:antialiased
+  }
   .molde{max-width:1120px;margin:0 auto;padding:0 24px}
   a{color:inherit;text-decoration:none}
   :focus-visible{outline:3px solid var(--roxo);outline-offset:3px;border-radius:8px}
@@ -29,10 +33,14 @@
   .b2{width:420px;height:420px;background:#FFF0BC;bottom:-160px;right:-120px}
 
   /* navegação */
-  nav{position:sticky;top:0;background:rgba(252,250,244,.85);backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--linha);z-index:30}
-  .navlinha{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;
-    max-width:1120px;margin:0 auto;flex-wrap:wrap}
+  nav{
+    position:sticky;top:0;background:rgba(252,250,244,.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linha);z-index:30
+  }
+  .navlinha{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;
+    max-width:1120px;margin:0 auto;flex-wrap:wrap
+  }
   .marca{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.2px}
   .raio{width:36px;height:36px;border-radius:10px;background:var(--amarelo);display:grid;place-items:center;font-size:18px}
   .menu{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
@@ -47,10 +55,15 @@
   h1{font-size:clamp(36px,5.4vw,58px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin:14px 0 18px}
   .sub{color:var(--suave);font-size:18px;line-height:1.65;max-width:680px;margin:0 auto}
   .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-  .botao{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:14px;font-weight:700;
-    font-size:15px;box-shadow:var(--sombra);transition:transform .15s}
+  .botao{
+    display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:14px;font-weight:700;
+    font-size:15px;box-shadow:var(--sombra);transition:transform .15s
+  }
   .botao:hover{transform:translateY(-2px)}
-  @media (prefers-reduced-motion: reduce){ .botao{transition:none} .botao:hover{transform:none} }
+  @media (prefers-reduced-motion: reduce){
+    .botao{transition:none}
+    .botao:hover{transform:none}
+  }
   .botao.preto{background:var(--tinta);color:#fff}
   .botao.amarelo{background:var(--amarelo);color:var(--tinta)}
   .botao.claro{background:#fff;color:var(--tinta);border:1px solid var(--linha)}
@@ -62,8 +75,10 @@
 
   /* cartões dos pilares */
   .grade5{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-  .cartao{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);
-    padding:26px 20px;position:relative}
+  .cartao{
+    background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);
+    padding:26px 20px;position:relative
+  }
   .ponto{position:absolute;top:16px;left:16px;width:10px;height:10px;border-radius:50%}
   .icone{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:24px;margin:6px auto 14px}
   .cartao h3{font-size:16.5px;font-weight:800;text-align:center;letter-spacing:-.2px}
@@ -76,30 +91,51 @@
 
   /* dois públicos */
   .duplas{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
-  .publico{background:var(--card);border-radius:20px;box-shadow:var(--sombra);padding:34px;border-top:4px solid var(--azul)}
+  .publico{
+    background:var(--card);
+    border-radius:20px;
+    box-shadow:var(--sombra);
+    padding:34px;
+    border-top:4px solid var(--azul);
+    text-align:center;
+  }
   .publico.prof{border-top-color:var(--verde)}
   .rotulinho{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--azul)}
   .publico.prof .rotulinho{color:var(--verde)}
   .publico h3{font-size:22px;font-weight:800;letter-spacing:-.4px;margin:10px 0 8px;line-height:1.3}
   .publico p{color:var(--suave);font-size:15px;line-height:1.6;margin-bottom:20px}
+  .publico .botao{justify-content:center}
   .nota{font-size:13px;color:var(--suave);margin-top:14px}
 
   /* escada (fluxo) */
   .fluxo{background:var(--card);border:1px solid var(--linha);border-radius:20px;box-shadow:var(--sombra);padding:34px 30px}
   .fluxo h3{font-size:20px;font-weight:800;margin-bottom:22px}
   .passos{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
-  .passo{flex:1;min-width:170px;background:var(--bg);border:1px dashed #E3D9BC;border-radius:14px;
-    padding:16px;display:flex;gap:12px;align-items:center}
-  .num{min-width:34px;height:34px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;
-    font-weight:800;font-size:15px}
+  .passo{
+    flex:1;min-width:170px;background:var(--bg);border:1px dashed #E3D9BC;border-radius:14px;
+    padding:16px;display:flex;gap:12px;align-items:center
+  }
+  .num{
+    min-width:34px;height:34px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;
+    font-weight:800;font-size:15px
+  }
   .passo b{font-size:14.5px;display:block}
   .passo span{font-size:12.5px;color:var(--suave)}
 
   /* peças */
   .grade7{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-  .peca{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);padding:22px}
-  .peca .tag{display:inline-block;background:var(--amarelo-claro);color:var(--ambar);font-weight:800;font-size:12px;
-    border-radius:8px;padding:4px 10px;margin-bottom:10px}
+  .peca{
+    background:var(--card);
+    border:1px solid var(--linha);
+    border-radius:18px;
+    box-shadow:var(--sombra);
+    padding:22px;
+    text-align:center;
+  }
+  .peca .tag{
+    display:inline-block;background:var(--amarelo-claro);color:var(--ambar);font-weight:800;font-size:12px;
+    border-radius:8px;padding:4px 10px;margin-bottom:10px
+  }
   .peca h3{font-size:16.5px;font-weight:800;letter-spacing:-.2px;margin-bottom:6px}
   .peca p{font-size:13.8px;color:var(--suave);line-height:1.55}
 
@@ -116,16 +152,22 @@
   .foto{border-radius:20px;box-shadow:var(--sombra)}
   .cita{margin-top:16px;font-style:italic;color:var(--ambar);font-weight:600}
 
-  footer{border-top:1px solid var(--linha);padding:36px 0 44px;text-align:center;color:var(--suave);font-size:14px;line-height:1.9}
+  footer{
+    border-top:1px solid var(--linha);padding:36px 0 44px;text-align:center;color:var(--suave);
+    font-size:14px;line-height:1.9
+  }
   footer a{color:var(--tinta);font-weight:600}
 </style>
 </head>
 <body>
-<div class="blob b1"></div><div class="blob b2"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
 
 <nav aria-label="principal">
   <div class="navlinha">
-    <a class="marca" href="#topo"><img src="logo-hackschool_1.png" alt="Hack School" style="height:38px;width:auto"></a>
+    <a class="marca" href="#topo">
+      <img src="logo-hackschool_1.png" alt="Hack School" style="height:38px;width:auto">
+    </a>
     <div class="menu">
       <a class="pill" href="#metodo">O método</a>
       <a class="pill" href="#pecas">Como funciona</a>
@@ -155,11 +197,36 @@
       <p>Todo Hack School se apoia em cinco pilares — e cada equipe é montada para ter todos eles representados.</p>
     </div>
     <div class="grade5">
-      <div class="cartao c-azul"><span class="ponto"></span><div class="icone">🎯</div><h3>Desafio</h3><p>o ponto de partida: uma pergunta real, sem resposta pronta</p></div>
-      <div class="cartao c-verde"><span class="ponto"></span><div class="icone">🤝</div><h3>Trabalho em grupo</h3><p>o formato: na vida, os desafios se resolvem em equipe</p></div>
-      <div class="cartao c-laranja"><span class="ponto"></span><div class="icone">🧩</div><h3>Multidisciplinaridade</h3><p>o conteúdo: todos os conhecimentos a serviço da solução</p></div>
-      <div class="cartao c-vermelho"><span class="ponto"></span><div class="icone">📍</div><h3>Território</h3><p>a sala de aula: escola, bairro, cidade, universidade</p></div>
-      <div class="cartao c-roxo"><span class="ponto"></span><div class="icone">🚀</div><h3>Protagonismo</h3><p>o resultado: o estudante levanta, pergunta e constrói</p></div>
+      <div class="cartao c-azul">
+        <span class="ponto"></span>
+        <div class="icone">🎯</div>
+        <h3>Desafio</h3>
+        <p>o ponto de partida: uma pergunta real, sem resposta pronta</p>
+      </div>
+      <div class="cartao c-verde">
+        <span class="ponto"></span>
+        <div class="icone">🤝</div>
+        <h3>Trabalho em grupo</h3>
+        <p>o formato: na vida, os desafios se resolvem em equipe</p>
+      </div>
+      <div class="cartao c-laranja">
+        <span class="ponto"></span>
+        <div class="icone">🧩</div>
+        <h3>Multidisciplinaridade</h3>
+        <p>o conteúdo: todos os conhecimentos a serviço da solução</p>
+      </div>
+      <div class="cartao c-vermelho">
+        <span class="ponto"></span>
+        <div class="icone">📍</div>
+        <h3>Território</h3>
+        <p>a sala de aula: escola, bairro, cidade, universidade</p>
+      </div>
+      <div class="cartao c-roxo">
+        <span class="ponto"></span>
+        <div class="icone">🚀</div>
+        <h3>Protagonismo</h3>
+        <p>o resultado: o estudante levanta, pergunta e constrói</p>
+      </div>
     </div>
   </div>
 </section>
@@ -188,11 +255,26 @@
     <div class="fluxo">
       <h3>A escada do método — da sala de aula ao movimento nacional</h3>
       <div class="passos">
-        <div class="passo"><span class="num">1</span><span><b>Hack Class</b><span>uma turma, uma sala</span></span></div>
-        <div class="passo"><span class="num">2</span><span><b>Hack School</b><span>a escola inteira</span></span></div>
-        <div class="passo"><span class="num">3</span><span><b>Hack Inter</b><span>várias escolas juntas</span></span></div>
-        <div class="passo"><span class="num">4</span><span><b>Hack City</b><span>competição municipal</span></span></div>
-        <div class="passo"><span class="num">5</span><span><b>Hack Nation</b><span>etapas estadual e nacional</span></span></div>
+        <div class="passo">
+          <span class="num">1</span>
+          <span><b>Hack Class</b><span>uma turma, uma sala</span></span>
+        </div>
+        <div class="passo">
+          <span class="num">2</span>
+          <span><b>Hack School</b><span>a escola inteira</span></span>
+        </div>
+        <div class="passo">
+          <span class="num">3</span>
+          <span><b>Hack Inter</b><span>várias escolas juntas</span></span>
+        </div>
+        <div class="passo">
+          <span class="num">4</span>
+          <span><b>Hack City</b><span>competição municipal</span></span>
+        </div>
+        <div class="passo">
+          <span class="num">5</span>
+          <span><b>Hack Nation</b><span>etapas estadual e nacional</span></span>
+        </div>
       </div>
     </div>
   </div>
@@ -206,13 +288,41 @@
       <p>Por trás da energia de um Hack School existe uma engenharia precisa — o motor do método.</p>
     </div>
     <div class="grade7">
-      <div class="peca"><span class="tag">Peça 1</span><h3>O desafio</h3><p>A pergunta que liga o motor: a aplicação sai à procura do conteúdo, e não o contrário.</p></div>
-      <div class="peca"><span class="tag">Peça 2</span><h3>O tempo comprimido</h3><p>Da maratona de 48 horas ao desafio de uma aula — a energia mora na contagem regressiva.</p></div>
-      <div class="peca"><span class="tag">Peça 3</span><h3>Trilhas e percurso próprio</h3><p>O conhecimento organizado em escolhas: escolher é o primeiro ato de protagonismo.</p></div>
-      <div class="peca"><span class="tag">Peça 4</span><h3>Encontros improváveis</h3><p>Grupos formados pela engenharia dos 20 perfis, em 5 categorias de habilidades.</p></div>
-      <div class="peca"><span class="tag">Peça 5</span><h3>O território</h3><p>O espaço que ensina — e que revela problemas reais que a sala de aula não produziria.</p></div>
-      <div class="peca"><span class="tag">Peça 6</span><h3>A mentoria</h3><p>Professores e especialistas ao lado dos grupos: perguntam mais, afirmam menos.</p></div>
-      <div class="peca"><span class="tag">Peça 7</span><h3>O pitch</h3><p>Toda edição termina com apresentação pública: uma plateia real que dá destino ao conhecimento.</p></div>
+      <div class="peca">
+        <span class="tag">Peça 1</span>
+        <h3>O desafio</h3>
+        <p>A pergunta que liga o motor: a aplicação sai à procura do conteúdo, e não o contrário.</p>
+      </div>
+      <div class="peca">
+        <span class="tag">Peça 2</span>
+        <h3>O tempo comprimido</h3>
+        <p>Da maratona de 48 horas ao desafio de uma aula — a energia mora na contagem regressiva.</p>
+      </div>
+      <div class="peca">
+        <span class="tag">Peça 3</span>
+        <h3>Trilhas e percurso próprio</h3>
+        <p>O conhecimento organizado em escolhas: escolher é o primeiro ato de protagonismo.</p>
+      </div>
+      <div class="peca">
+        <span class="tag">Peça 4</span>
+        <h3>Encontros improváveis</h3>
+        <p>Grupos formados pela engenharia dos 20 perfis, em 5 categorias de habilidades.</p>
+      </div>
+      <div class="peca">
+        <span class="tag">Peça 5</span>
+        <h3>O território</h3>
+        <p>O espaço que ensina — e que revela problemas reais que a sala de aula não produziria.</p>
+      </div>
+      <div class="peca">
+        <span class="tag">Peça 6</span>
+        <h3>A mentoria</h3>
+        <p>Professores e especialistas ao lado dos grupos: perguntam mais, afirmam menos.</p>
+      </div>
+      <div class="peca">
+        <span class="tag">Peça 7</span>
+        <h3>O pitch</h3>
+        <p>Toda edição termina com apresentação pública: uma plateia real que dá destino ao conhecimento.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -239,7 +349,9 @@
     <div>
       <div class="olho">Quem criou</div>
       <h2>Cleiton Marino Santana</h2>
-      <p class="sub" style="margin:0">Professor, pesquisador e gestor público. Vencedor do Prêmio Professores do Brasil com um projeto social de xadrez na periferia de Mato Grosso, teve sua trajetória contada no livro <i>A Jornada do Mestre</i> (Editora BUZZ). De professor a Secretário de Educação de Várzea Grande e Superintendente de Desenvolvimento Científico, Tecnológico e Inovação da SECITECI-MT, uniu educação e inovação para criar o Hack School.</p>
+      <p class="sub" style="margin:0">
+        Professor, pesquisador e gestor público, Cleiton Marino Santana construiu sua trajetória unindo educação, inovação e impacto social. Foi vencedor do Prêmio Professores do Brasil com um projeto de xadrez desenvolvido na periferia de Mato Grosso, experiência que também inspirou o livro <i>A Jornada do Mestre</i> (Editora BUZZ). Ao longo de sua caminhada, atuou como Secretário de Educação de Várzea Grande e como Superintendente de Desenvolvimento Científico, Tecnológico e Inovação da SECITECI-MT. Dessa vivência entre escola, gestão e transformação social nasceu o Hack School.
+      </p>
       <p class="cita">"Nenhuma peça transforma o jogo parada. É preciso mover."</p>
     </div>
   </div>
