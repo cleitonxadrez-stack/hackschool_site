@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hack School — O método que transforma a escola em território de aprendizagem</title>
+<meta name="description" content="Hack School é uma metodologia educacional baseada em desafios: os estudantes, em grupos, usam tudo o que aprenderam para resolver problemas reais da comunidade.">
+<style>
+  :root{
+    --bg:#FCFAF4; --card:#FFFFFF; --linha:#EFE8D5;
+    --tinta:#171C26; --suave:#5E6675;
+    --amarelo:#F6C915; --amarelo-claro:#FFF3C4; --ambar:#B98900;
+    --azul:#3B82F6; --verde:#23A45C; --laranja:#F5820D; --vermelho:#E6483F; --roxo:#8A5CF6;
+    --sombra:0 12px 32px rgba(23,28,38,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--tinta);
+    -webkit-font-smoothing:antialiased}
+  .molde{max-width:1120px;margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:3px solid var(--roxo);outline-offset:3px;border-radius:8px}
+  img{display:block;max-width:100%}
+
+  /* blobs suaves de fundo */
+  .blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.5;z-index:-1;pointer-events:none}
+  .b1{width:520px;height:520px;background:#FFE79A;top:-180px;left:-160px}
+  .b2{width:420px;height:420px;background:#FFF0BC;bottom:-160px;right:-120px}
+
+  /* navegação */
+  nav{position:sticky;top:0;background:rgba(252,250,244,.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linha);z-index:30}
+  .navlinha{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;
+    max-width:1120px;margin:0 auto;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.2px}
+  .raio{width:36px;height:36px;border-radius:10px;background:var(--amarelo);display:grid;place-items:center;font-size:18px}
+  .menu{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .pill{padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600;color:var(--suave);border:1px solid transparent}
+  .pill:hover{background:#fff;border-color:var(--linha);color:var(--tinta)}
+  .pill.destaque{background:var(--amarelo);color:var(--tinta);box-shadow:var(--sombra)}
+  .pill.escuro{background:var(--tinta);color:#fff}
+
+  /* herói */
+  .heroi{text-align:center;padding:84px 0 56px}
+  .olho{font-size:12.5px;font-weight:700;letter-spacing:3px;color:var(--ambar);text-transform:uppercase}
+  h1{font-size:clamp(36px,5.4vw,58px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin:14px 0 18px}
+  .sub{color:var(--suave);font-size:18px;line-height:1.65;max-width:680px;margin:0 auto}
+  .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .botao{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:14px;font-weight:700;
+    font-size:15px;box-shadow:var(--sombra);transition:transform .15s}
+  .botao:hover{transform:translateY(-2px)}
+  @media (prefers-reduced-motion: reduce){ .botao{transition:none} .botao:hover{transform:none} }
+  .botao.preto{background:var(--tinta);color:#fff}
+  .botao.amarelo{background:var(--amarelo);color:var(--tinta)}
+  .botao.claro{background:#fff;color:var(--tinta);border:1px solid var(--linha)}
+
+  section{padding:64px 0}
+  .cabec{text-align:center;max-width:660px;margin:0 auto 40px}
+  h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.8px;margin:10px 0 12px}
+  .cabec p{color:var(--suave);font-size:16.5px;line-height:1.6}
+
+  /* cartões dos pilares */
+  .grade5{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+  .cartao{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);
+    padding:26px 20px;position:relative}
+  .ponto{position:absolute;top:16px;left:16px;width:10px;height:10px;border-radius:50%}
+  .icone{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:24px;margin:6px auto 14px}
+  .cartao h3{font-size:16.5px;font-weight:800;text-align:center;letter-spacing:-.2px}
+  .cartao p{font-size:13.5px;color:var(--suave);text-align:center;margin-top:6px}
+  .c-azul .ponto{background:var(--azul)} .c-azul .icone{background:#EAF1FE}
+  .c-verde .ponto{background:var(--verde)} .c-verde .icone{background:#E8F6EE}
+  .c-laranja .ponto{background:var(--laranja)} .c-laranja .icone{background:#FEF0E2}
+  .c-vermelho .ponto{background:var(--vermelho)} .c-vermelho .icone{background:#FDEAE9}
+  .c-roxo .ponto{background:var(--roxo)} .c-roxo .icone{background:#F1EBFD}
+
+  /* dois públicos */
+  .duplas{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+  .publico{background:var(--card);border-radius:20px;box-shadow:var(--sombra);padding:34px;border-top:4px solid var(--azul)}
+  .publico.prof{border-top-color:var(--verde)}
+  .rotulinho{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--azul)}
+  .publico.prof .rotulinho{color:var(--verde)}
+  .publico h3{font-size:22px;font-weight:800;letter-spacing:-.4px;margin:10px 0 8px;line-height:1.3}
+  .publico p{color:var(--suave);font-size:15px;line-height:1.6;margin-bottom:20px}
+  .nota{font-size:13px;color:var(--suave);margin-top:14px}
+
+  /* escada (fluxo) */
+  .fluxo{background:var(--card);border:1px solid var(--linha);border-radius:20px;box-shadow:var(--sombra);padding:34px 30px}
+  .fluxo h3{font-size:20px;font-weight:800;margin-bottom:22px}
+  .passos{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+  .passo{flex:1;min-width:170px;background:var(--bg);border:1px dashed #E3D9BC;border-radius:14px;
+    padding:16px;display:flex;gap:12px;align-items:center}
+  .num{min-width:34px;height:34px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;
+    font-weight:800;font-size:15px}
+  .passo b{font-size:14.5px;display:block}
+  .passo span{font-size:12.5px;color:var(--suave)}
+
+  /* peças */
+  .grade7{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .peca{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);padding:22px}
+  .peca .tag{display:inline-block;background:var(--amarelo-claro);color:var(--ambar);font-weight:800;font-size:12px;
+    border-radius:8px;padding:4px 10px;margin-bottom:10px}
+  .peca h3{font-size:16.5px;font-weight:800;letter-spacing:-.2px;margin-bottom:6px}
+  .peca p{font-size:13.8px;color:var(--suave);line-height:1.55}
+
+  /* livro */
+  .livrocx{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:40px;align-items:center}
+  @media(max-width:820px){ .livrocx{grid-template-columns:1fr} }
+  .capa{border-radius:18px;box-shadow:0 24px 48px rgba(23,28,38,.18)}
+  .livrocx h2{text-align:left}
+  .livrocx .sub{margin:0 0 22px;text-align:left}
+
+  /* autor */
+  .autorcx{display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:40px;align-items:center}
+  @media(max-width:820px){ .autorcx{grid-template-columns:1fr} }
+  .foto{border-radius:20px;box-shadow:var(--sombra)}
+  .cita{margin-top:16px;font-style:italic;color:var(--ambar);font-weight:600}
+
+  footer{border-top:1px solid var(--linha);padding:36px 0 44px;text-align:center;color:var(--suave);font-size:14px;line-height:1.9}
+  footer a{color:var(--tinta);font-weight:600}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+
+<nav aria-label="principal">
+  <div class="navlinha">
+    <a class="marca" href="#topo"><img src="logo-hackschool.png" alt="Hack School" style="height:38px;width:auto"></a>
+    <div class="menu">
+      <a class="pill" href="#metodo">O método</a>
+      <a class="pill" href="#pecas">Como funciona</a>
+      <a class="pill" href="#niveis">Níveis</a>
+      <a class="pill" href="#livro">O livro</a>
+      <a class="pill" href="#autor">Autor</a>
+      <a class="pill destaque" href="https://app.hackschool.app" target="_blank" rel="noopener">Fazer o teste</a>
+    </div>
+  </div>
+</nav>
+
+<header class="heroi molde" id="topo">
+  <div class="olho">Hack School · Metodologia educacional</div>
+  <h1>O método que transforma a escola<br>em território de aprendizagem</h1>
+  <p class="sub">Aprender deixa de ser obrigação e se torna envolvimento genuíno: os estudantes, em grupos, usam tudo o que aprenderam para resolver desafios reais da sua comunidade.</p>
+  <div class="ctas">
+    <a class="botao preto" href="#metodo">Conheça o método</a>
+    <a class="botao amarelo" href="https://app.hackschool.app" target="_blank" rel="noopener">Fazer o teste HackPerfil</a>
+  </div>
+</header>
+
+<section id="metodo">
+  <div class="molde">
+    <div class="cabec">
+      <div class="olho">Os 5 pilares</div>
+      <h2>O que sustenta o método</h2>
+      <p>Todo Hack School se apoia em cinco pilares — e cada equipe é montada para ter todos eles representados.</p>
+    </div>
+    <div class="grade5">
+      <div class="cartao c-azul"><span class="ponto"></span><div class="icone">🎯</div><h3>Desafio</h3><p>o ponto de partida: uma pergunta real, sem resposta pronta</p></div>
+      <div class="cartao c-verde"><span class="ponto"></span><div class="icone">🤝</div><h3>Trabalho em grupo</h3><p>o formato: na vida, os desafios se resolvem em equipe</p></div>
+      <div class="cartao c-laranja"><span class="ponto"></span><div class="icone">🧩</div><h3>Multidisciplinaridade</h3><p>o conteúdo: todos os conhecimentos a serviço da solução</p></div>
+      <div class="cartao c-vermelho"><span class="ponto"></span><div class="icone">📍</div><h3>Território</h3><p>a sala de aula: escola, bairro, cidade, universidade</p></div>
+      <div class="cartao c-roxo"><span class="ponto"></span><div class="icone">🚀</div><h3>Protagonismo</h3><p>o resultado: o estudante levanta, pergunta e constrói</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="molde duplas">
+    <div class="publico">
+      <div class="rotulinho">Para alunos</div>
+      <h3>Descubra seu perfil e encontre seu lugar na equipe.</h3>
+      <p>O HackPerfil identifica, em 20 minutos, qual dos 20 perfis é o seu — e mostra o talento que você leva para o grupo.</p>
+      <a class="botao preto" href="https://app.hackschool.app" target="_blank" rel="noopener">📝 Fazer o teste — sou aluno</a>
+      <p class="nota">Entrada rápida, simples e sem barreiras.</p>
+    </div>
+    <div class="publico prof">
+      <div class="rotulinho">Para professores</div>
+      <h3>Aplique o método, acompanhe a turma e forme equipes completas.</h3>
+      <p>Do teste de perfis à formação de grupos pela regra de ouro: cada equipe com quem pensa, quem cria, quem executa, quem comunica e quem cuida do coletivo.</p>
+      <a class="botao amarelo" href="https://app.hackschool.app" target="_blank" rel="noopener">🛡️ Área do professor</a>
+      <p class="nota">O guia completo de aplicação está no livro Hack School.</p>
+    </div>
+  </div>
+</section>
+
+<section id="niveis">
+  <div class="molde">
+    <div class="fluxo">
+      <h3>A escada do método — da sala de aula ao movimento nacional</h3>
+      <div class="passos">
+        <div class="passo"><span class="num">1</span><span><b>Hack Class</b><span>uma turma, uma sala</span></span></div>
+        <div class="passo"><span class="num">2</span><span><b>Hack School</b><span>a escola inteira</span></span></div>
+        <div class="passo"><span class="num">3</span><span><b>Hack Inter</b><span>várias escolas juntas</span></span></div>
+        <div class="passo"><span class="num">4</span><span><b>Hack City</b><span>competição municipal</span></span></div>
+        <div class="passo"><span class="num">5</span><span><b>Hack Nation</b><span>etapas estadual e nacional</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pecas">
+  <div class="molde">
+    <div class="cabec">
+      <div class="olho">Como funciona</div>
+      <h2>As 7 peças que fazem a mágica acontecer</h2>
+      <p>Por trás da energia de um Hack School existe uma engenharia precisa — o motor do método.</p>
+    </div>
+    <div class="grade7">
+      <div class="peca"><span class="tag">Peça 1</span><h3>O desafio</h3><p>A pergunta que liga o motor: a aplicação sai à procura do conteúdo, e não o contrário.</p></div>
+      <div class="peca"><span class="tag">Peça 2</span><h3>O tempo comprimido</h3><p>Da maratona de 48 horas ao desafio de uma aula — a energia mora na contagem regressiva.</p></div>
+      <div class="peca"><span class="tag">Peça 3</span><h3>Trilhas e percurso próprio</h3><p>O conhecimento organizado em escolhas: escolher é o primeiro ato de protagonismo.</p></div>
+      <div class="peca"><span class="tag">Peça 4</span><h3>Encontros improváveis</h3><p>Grupos formados pela engenharia dos 20 perfis, em 5 categorias de habilidades.</p></div>
+      <div class="peca"><span class="tag">Peça 5</span><h3>O território</h3><p>O espaço que ensina — e que revela problemas reais que a sala de aula não produziria.</p></div>
+      <div class="peca"><span class="tag">Peça 6</span><h3>A mentoria</h3><p>Professores e especialistas ao lado dos grupos: perguntam mais, afirmam menos.</p></div>
+      <div class="peca"><span class="tag">Peça 7</span><h3>O pitch</h3><p>Toda edição termina com apresentação pública: uma plateia real que dá destino ao conhecimento.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="livro">
+  <div class="molde livrocx">
+    <img class="capa" src="capa-livro.png" alt="Capa do livro Hack School, de Cleiton Marino Santana">
+    <div>
+      <div class="olho">O livro</div>
+      <h2>Hack School — o guia prático para educadores</h2>
+      <p class="sub">Tudo para levar o método à sua escola: a origem do Hack School, as bases científicas e o passo a passo completo — com dinâmicas prontas, o teste de perfis e os checklists da primeira edição.</p>
+      <div class="ctas" style="justify-content:flex-start">
+        <a class="botao preto" href="#">Comprar o livro</a>
+        <!-- SUBSTITUA o href="#" acima pelo link da loja quando o livro for lançado -->
+        <a class="botao claro" href="mailto:cleitonxadrez@gmail.com?subject=Quero ser avisado do lançamento do livro Hack School">Quero ser avisado</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor">
+  <div class="molde autorcx">
+    <img class="foto" src="foto-autor.jpg" alt="Cleiton Marino Santana, criador do método Hack School, sorrindo, de camisa branca">
+    <div>
+      <div class="olho">Quem criou</div>
+      <h2>Cleiton Marino Santana</h2>
+      <p class="sub" style="margin:0">Professor, pesquisador e gestor público. Vencedor do Prêmio Professores do Brasil com um projeto social de xadrez na periferia de Mato Grosso, teve sua trajetória contada no livro <i>A Jornada do Mestre</i> (Editora BUZZ). De professor a Secretário de Educação de Várzea Grande e Superintendente de Desenvolvimento Científico, Tecnológico e Inovação da SECITECI-MT, uniu educação e inovação para criar o Hack School.</p>
+      <p class="cita">"Nenhuma peça transforma o jogo parada. É preciso mover."</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="molde">
+    <img src="logo-hackschool-vertical.png" alt="Hack School" style="height:110px;width:auto;margin:0 auto 12px">
+    <p><b>hackschool.app</b></p>
+    <p>Contato: <a href="mailto:cleitonxadrez@gmail.com">cleitonxadrez@gmail.com</a> · Instagram: <a href="https://instagram.com/cleitonmarinosantana" target="_blank" rel="noopener">@cleitonmarinosantana</a></p>
+    <p>© 2026 Hack School · Cleiton Marino Santana — Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>
