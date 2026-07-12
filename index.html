@@ -81,13 +81,14 @@
   .cartao{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);
     padding:24px 18px;position:relative}
   .ponto{position:absolute;top:16px;left:16px;width:10px;height:10px;border-radius:50%}
-  .icone{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:22px;margin:4px auto 12px}
+  .icone{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;margin:4px auto 12px;overflow:hidden}
+  .icone img{width:100%;height:100%;object-fit:cover;display:block}
   .cartao h3{font-size:16px;font-weight:800;text-align:center;letter-spacing:-.2px}
   .cartao p{font-size:13px;color:var(--suave);text-align:center;margin-top:5px}
-  .c-azul .ponto{background:var(--azul)} .c-azul .icone{background:#EAF1FE}
-  .c-verde .ponto{background:var(--verde)} .c-verde .icone{background:#E8F6EE}
-  .c-laranja .ponto{background:var(--laranja)} .c-laranja .icone{background:#FEF0E2}
-  .c-vermelho .ponto{background:var(--vermelho)} .c-vermelho .icone{background:#FDEAE9}
+  .c-azul .ponto{background:var(--azul)}
+  .c-verde .ponto{background:var(--verde)}
+  .c-laranja .ponto{background:var(--laranja)}
+  .c-vermelho .ponto{background:var(--vermelho)}
   .c-roxo .ponto{background:var(--roxo)} .c-roxo .icone{background:#F1EBFD}
   /* trio: 3 cards curtos (ecossistema / escola&comunidade) */
   .trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
@@ -290,11 +291,11 @@
       <p>Todo Hack School se apoia em cinco pilares — e cada equipe é montada para ter todos eles representados.</p>
     </div>
     <div class="grade5">
-      <div class="cartao c-azul"><span class="ponto"></span><div class="icone">🎯</div><h3>Desafio</h3><p>uma pergunta real, sem resposta pronta</p></div>
-      <div class="cartao c-verde"><span class="ponto"></span><div class="icone">🤝</div><h3>Trabalho em grupo</h3><p>na vida, os desafios se resolvem em equipe</p></div>
-      <div class="cartao c-laranja"><span class="ponto"></span><div class="icone">🧩</div><h3>Multidisciplinaridade</h3><p>todos os conhecimentos a serviço da solução</p></div>
-      <div class="cartao c-vermelho"><span class="ponto"></span><div class="icone">📍</div><h3>Território</h3><p>escola, bairro, cidade, universidade</p></div>
-      <div class="cartao c-roxo"><span class="ponto"></span><div class="icone">🚀</div><h3>Protagonismo</h3><p>o estudante levanta, pergunta e constrói</p></div>
+      <div class="cartao c-azul"><span class="ponto"></span><div class="icone"><img src="icone-pilar-desafio.png" alt="Desafio"></div><h3>Desafio</h3><p>uma pergunta real, sem resposta pronta</p></div>
+      <div class="cartao c-verde"><span class="ponto"></span><div class="icone"><img src="icone-pilar-equipe.png" alt="Trabalho em grupo"></div><h3>Trabalho em grupo</h3><p>na vida, os desafios se resolvem em equipe</p></div>
+      <div class="cartao c-laranja"><span class="ponto"></span><div class="icone"><img src="icone-pilar-multidisciplinar.png" alt="Multidisciplinaridade"></div><h3>Multidisciplinaridade</h3><p>todos os conhecimentos a serviço da solução</p></div>
+      <div class="cartao c-vermelho"><span class="ponto"></span><div class="icone"><img src="icone-pilar-territorio.png" alt="Território"></div><h3>Território</h3><p>escola, bairro, cidade, universidade</p></div>
+      <div class="cartao c-roxo"><span class="ponto"></span><div class="icone"><img src="icone-pilar-protagonismo.png" alt="Protagonismo"></div><h3>Protagonismo</h3><p>o estudante levanta, pergunta e constrói</p></div>
     </div>
   </div>
 </section>
