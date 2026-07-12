@@ -17,7 +17,7 @@
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
   body{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--tinta);
-    -webkit-font-smoothing:antialiased}
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
   .molde{max-width:1120px;margin:0 auto;padding:0 24px}
   a{color:inherit;text-decoration:none}
   :focus-visible{outline:3px solid var(--roxo);outline-offset:3px;border-radius:8px}
@@ -27,10 +27,13 @@
   .b2{width:420px;height:420px;background:#FFF0BC;bottom:-160px;right:-120px}
   nav{position:sticky;top:0;background:rgba(252,250,244,.85);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--linha);z-index:30}
-  .navlinha{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;
+  .brandbar{display:flex;align-items:center;justify-content:space-between;padding:10px 24px 6px}
+  .navlinha{display:flex;align-items:center;justify-content:center;gap:16px;padding:8px 24px 12px;
     max-width:1120px;margin:0 auto;flex-wrap:wrap}
   .marca{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.2px}
-  .menu{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .marca-brasil{display:flex;align-items:center}
+  .marca-brasil img{height:22px;width:auto}
+  .menu{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}
   .pill{padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600;color:var(--suave);border:1px solid transparent}
   .pill:hover{background:#fff;border-color:var(--linha);color:var(--tinta)}
   .pill.destaque{background:var(--amarelo);color:var(--tinta);box-shadow:var(--sombra)}
@@ -38,6 +41,26 @@
   .olho{font-size:12.5px;font-weight:700;letter-spacing:3px;color:var(--ambar);text-transform:uppercase}
   h1{font-size:clamp(34px,5.2vw,54px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin:14px 0 16px}
   .sub{color:var(--suave);font-size:17.5px;line-height:1.6;max-width:660px;margin:0 auto}
+  /* carrossel de fotos dos pilares */
+  .fotoscroll{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;
+    overflow:hidden;margin-top:30px;margin-bottom:6px;
+    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .fotoscroll-track{display:flex;gap:18px;width:max-content;animation:rolarfotos 32s linear infinite}
+  @media (prefers-reduced-motion: reduce){ .fotoscroll-track{animation:none} }
+  .fotoscroll figure{position:relative;flex:0 0 auto;width:260px;height:170px;border-radius:16px;
+    overflow:hidden;box-shadow:var(--sombra);margin:0;background:var(--card)}
+  .fotoscroll figure img{width:100%;height:100%;object-fit:cover;display:block}
+  .fotoscroll figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px 12px;font-size:12.5px;
+    font-weight:700;color:#fff;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent)}
+  @keyframes rolarfotos{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  /* produtos do ecossistema */
+  .produtosGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .produtoCard{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);padding:22px}
+  .produtoCard.destaque-produto{border-color:var(--amarelo)}
+  .produtoCard img{height:26px;width:auto;margin-bottom:14px;display:block}
+  .produtoCard h3{font-size:15.5px;font-weight:800;letter-spacing:-.2px;margin-bottom:6px}
+  .produtoCard p{font-size:13.3px;color:var(--suave);line-height:1.5}
   .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
   .botao{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:14px;font-weight:700;
     font-size:15px;box-shadow:var(--sombra);transition:transform .15s}
@@ -145,8 +168,11 @@
 <body>
 <div class="blob b1"></div><div class="blob b2"></div>
 <nav aria-label="principal">
+  <div class="brandbar molde">
+    <a class="marca-brasil" href="#produtos" title="HACK BRASIL — Ecossistema Brasileiro de Inovação Educacional"><img src="logo-hackbrasil.png" alt="HACK BRASIL"></a>
+    <a class="marca" href="#topo"><img src="logo-hackschool_1.png" alt="Hack School" style="height:32px;width:auto"></a>
+  </div>
   <div class="navlinha">
-    <a class="marca" href="#topo"><img src="logo-hackschool_1.png" alt="Hack School" style="height:36px;width:auto"></a>
     <div class="menu">
       <a class="pill" href="#ecossistema">Ecossistema</a>
       <a class="pill" href="#metodo">O método</a>
@@ -163,12 +189,80 @@
 <header class="heroi molde" id="topo">
   <div class="olho">Hack School® · Ecossistema educacional</div>
   <h1>O método que transforma a escola<br>em território de aprendizagem</h1>
+
+  <div class="fotoscroll" aria-hidden="false">
+    <div class="fotoscroll-track">
+      <figure><img src="foto-pilar-desafio.jpg" alt="Estudantes apresentando um desafio real para a turma"><figcaption>🎯 Desafio</figcaption></figure>
+      <figure><img src="foto-pilar-equipe.jpg" alt="Equipe de estudantes trabalhando juntos ao redor de um notebook"><figcaption>🤝 Trabalho em grupo</figcaption></figure>
+      <figure><img src="foto-pilar-multidisciplinar.jpg" alt="Estudantes e mentor combinando diferentes áreas de conhecimento em um projeto"><figcaption>🧩 Multidisciplinaridade</figcaption></figure>
+      <figure><img src="foto-pilar-territorio.jpg" alt="Estudantes e mentor caminhando pelo campus, representando a conexão com o território"><figcaption>📍 Território</figcaption></figure>
+      <figure><img src="foto-pilar-protagonismo.jpg" alt="Estudantes protagonizando a apresentação de sua solução"><figcaption>🚀 Protagonismo</figcaption></figure>
+      <figure aria-hidden="true"><img src="foto-pilar-desafio.jpg" alt=""><figcaption>🎯 Desafio</figcaption></figure>
+      <figure aria-hidden="true"><img src="foto-pilar-equipe.jpg" alt=""><figcaption>🤝 Trabalho em grupo</figcaption></figure>
+      <figure aria-hidden="true"><img src="foto-pilar-multidisciplinar.jpg" alt=""><figcaption>🧩 Multidisciplinaridade</figcaption></figure>
+      <figure aria-hidden="true"><img src="foto-pilar-territorio.jpg" alt=""><figcaption>📍 Território</figcaption></figure>
+      <figure aria-hidden="true"><img src="foto-pilar-protagonismo.jpg" alt=""><figcaption>🚀 Protagonismo</figcaption></figure>
+    </div>
+  </div>
+
   <p class="sub">O primeiro ecossistema educacional brasileiro que transforma escolas em Centros de Inovação, Tecnologia, Inteligência Artificial, Empreendedorismo e Desenvolvimento de Startups.</p>
   <div class="ctas">
     <a class="botao preto" href="#ecossistema">Conheça o ecossistema</a>
     <a class="botao amarelo" href="https://app.hackschool.app" target="_blank" rel="noopener">Fazer o teste HackPerfil</a>
   </div>
 </header>
+
+<section id="produtos">
+  <div class="molde">
+    <div class="cabec">
+      <div class="olho">HACK BRASIL® · Ecossistema Brasileiro de Inovação Educacional</div>
+      <h2>Um ecossistema, oito produtos, um propósito</h2>
+      <p>O Hack School é um dos produtos oficiais do ecossistema HACK BRASIL® — conheça os demais.</p>
+    </div>
+    <div class="produtosGrid">
+      <div class="produtoCard destaque-produto">
+        <img src="logo-hackschool_1.png" alt="HACK SCHOOL">
+        <h3>Sistema Educacional de Inovação</h3>
+        <p>Metodologia aplicada às escolas — é o produto que você está conhecendo agora.</p>
+      </div>
+      <div class="produtoCard">
+        <img src="logo-hackclub.png" alt="HACK CLUB">
+        <h3>Clube Permanente de Inovação</h3>
+        <p>Espaço onde os estudantes desenvolvem projetos, startups e tecnologias.</p>
+      </div>
+      <div class="produtoCard">
+        <img src="logo-hackhub.png" alt="HACK HUB">
+        <h3>Plataforma Digital</h3>
+        <p>Ambiente de aprendizagem, ranking, desafios, certificações e acompanhamento dos projetos.</p>
+      </div>
+      <div class="produtoCard">
+        <img src="logo-hackacademy.png" alt="HACK ACADEMY">
+        <h3>Formação e Certificação de Professores</h3>
+        <p>Programa nacional de formação e certificação de mentores.</p>
+      </div>
+      <div class="produtoCard">
+        <img src="logo-hackfestival.png" alt="HACK FESTIVAL">
+        <h3>O grande evento anual</h3>
+        <p>Onde as melhores equipes apresentam seus projetos.</p>
+      </div>
+      <div class="produtoCard">
+        <img src="logo-hackai.png" alt="HACK AI">
+        <h3>Inteligência Artificial aplicada à Educação</h3>
+        <p>IA integrada a toda a jornada de aprendizagem.</p>
+      </div>
+      <div class="produtoCard">
+        <img src="logo-hackstartup.png" alt="HACK STARTUP">
+        <h3>Desenvolvimento de startups estudantis</h3>
+        <p>Programa de empreendedorismo aplicado.</p>
+      </div>
+      <div class="produtoCard">
+        <img src="logo-hackresearch.png" alt="HACK RESEARCH">
+        <h3>Pesquisa científica e inovação</h3>
+        <p>Programa de pesquisa científica aplicada dos estudantes.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="ecossistema">
   <div class="molde">
