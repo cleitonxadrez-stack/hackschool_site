@@ -133,17 +133,13 @@
   .materialCard p a{color:var(--ambar);font-weight:700}
   .materialCard .tag{display:inline-block;background:var(--amarelo-claro);color:var(--ambar);font-weight:800;font-size:11px;
     letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:14px}
-  /* autor */
-  .autorcx{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:36px;align-items:center}
-  @media(max-width:820px){ .autorcx{grid-template-columns:1fr} }
-  .autor-links{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
-  .autor-links a{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--linha);
-    border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;color:var(--tinta)}
-  .autor-links a:hover{background:#fff;border-color:var(--amarelo)}
-  .foto{border-radius:20px;box-shadow:var(--sombra)}
-  .cita{margin-top:14px;font-style:italic;color:var(--ambar);font-weight:600}
+  /* loja */
+  .lojaImg{width:100%;border-radius:20px;box-shadow:var(--sombra);margin-top:8px}
   footer{border-top:1px solid var(--linha);padding:32px 0 40px;text-align:center;color:var(--suave);font-size:14px;line-height:1.9}
   footer a{color:var(--tinta);font-weight:600}
+  .produto-de{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+    margin:20px 0 12px;padding-top:20px;border-top:1px solid var(--linha);font-size:13px;color:var(--suave)}
+  .hbmark-img{height:22px;width:auto;display:inline-block;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -158,6 +154,7 @@
       <a class="pill" href="#planos">Planos</a>
       <a class="pill" href="#material">Material didático</a>
       <a class="pill" href="#livro">O livro</a>
+      <a class="pill" href="#loja">Loja</a>
       <a class="pill destaque" href="#planos">Seja uma escola parceira</a>
     </div>
   </div>
@@ -382,7 +379,7 @@
       </div>
       <div class="materialCard">
         <span class="tag" style="background:var(--linha);color:var(--tinta)">Aberto a todo educador</span>
-        <img src="capa-livro.png" alt="Capa do livro Hack School, de Cleiton Marino Santana">
+        <img src="capa-livro.png" alt="Capa do livro Hack School">
         <h3>Livro Hack School</h3>
         <p>O guia prático do método para qualquer professor ou gestor do Brasil conhecer — não é exclusivo das escolas parceiras. <a href="#livro">Saiba mais ↓</a></p>
       </div>
@@ -392,7 +389,7 @@
 
 <section id="livro">
   <div class="molde livrocx">
-    <img class="capa" src="capa-livro.png" alt="Capa do livro Hack School, de Cleiton Marino Santana">
+    <img class="capa" src="capa-livro.png" alt="Capa do livro Hack School">
     <div>
       <div class="olho">O livro — para todo educador</div>
       <h2>Hack School — o guia prático para educadores</h2>
@@ -406,18 +403,17 @@
   </div>
 </section>
 
-<section id="autor">
-  <div class="molde autorcx">
-    <img class="foto" src="foto-autor_1.jpg" alt="Cleiton Marino Santana, criador do método Hack School, sorrindo, de camisa branca">
-    <div>
-      <div class="olho">Quem criou</div>
-      <h2>Cleiton Marino Santana</h2>
-      <div class="autor-links">
-        <a href="https://www.instagram.com/cleitonmarinosantana/" target="_blank" rel="noopener">Instagram: @cleitonmarinosantana</a>
-        <a href="http://lattes.cnpq.br/1382148648127357" target="_blank" rel="noopener">Currículo Lattes ↗</a>
-      </div>
-      <p class="sub" style="margin:0">Professor, pesquisador e gestor público. Vencedor do Prêmio Professores do Brasil com um projeto social de xadrez na periferia de Mato Grosso, teve sua trajetória contada no livro <i>A Jornada do Mestre</i> (Editora BUZZ). De professor a Secretário de Educação de Várzea Grande e Superintendente de Desenvolvimento Científico, Tecnológico e Inovação da SECITECI-MT, uniu educação e inovação para criar o Hack School.</p>
-      <p class="cita">"Nenhuma peça transforma o jogo parada. É preciso mover."</p>
+<section id="loja">
+  <div class="molde">
+    <div class="cabec">
+      <div class="olho">Loja oficial</div>
+      <h2>Conheça os produtos da nossa loja</h2>
+      <p>Camisetas, moletons, boné, crachá, bolsa transformável, carregador wireless, copo retrátil, óculos e botton interativo — para alunos e mentores vestirem a marca da inovação.</p>
+    </div>
+    <img class="lojaImg" src="loja-hackschool.png" alt="Coleção oficial de produtos da loja Hack School: camisetas, moletons, boné, crachá, bolsa transformável, carregador wireless, copo retrátil, óculos futuristas e botton interativo">
+    <div class="ctas" style="margin-top:24px">
+      <a class="botao preto" href="#">Visitar a loja</a>
+      <!-- SUBSTITUA o href="#" acima pelo link da loja oficial assim que estiver no ar -->
     </div>
   </div>
 </section>
@@ -428,6 +424,11 @@
     <p><b>hackschool.app</b></p>
     <p>Contato: <a href="mailto:hackschoolbr@gmail.com">hackschoolbr@gmail.com</a> · Instagram: <a href="https://www.instagram.com/hackschoolbr/" target="_blank" rel="noopener">@hackschoolbr</a></p>
     <p style="margin-top:6px"><a href="mailto:hackschoolbr@gmail.com?subject=Quero%20ser%20uma%20escola%20parceira%20Hack%20School">Seja uma escola parceira →</a></p>
+    <div class="produto-de">
+      <span>Hack School® é um produto oficial, licenciado do ecossistema</span>
+      <img src="logo-hackbrasil.png" alt="HACK BRASIL — Ecossistema Brasileiro de Inovação Educacional" class="hbmark-img">
+      <!-- SUBSTITUA logo-hackbrasil.png pelo arquivo real do logo HACK BRASIL (PNG/SVG com fundo transparente, versão horizontal preta+dourada) -->
+    </div>
     <p>© 2026 Hack School® — Todos os direitos reservados.</p>
   </div>
 </footer>
