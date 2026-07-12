@@ -32,7 +32,7 @@
     max-width:1120px;margin:0 auto;flex-wrap:wrap}
   .marca{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.2px}
   .marca-brasil{display:flex;align-items:center}
-  .marca-brasil img{height:22px;width:auto}
+  .marca-brasil img{height:32px;width:auto}
   .menu{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}
   .pill{padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600;color:var(--suave);border:1px solid transparent}
   .pill:hover{background:#fff;border-color:var(--linha);color:var(--tinta)}
@@ -41,19 +41,22 @@
   .olho{font-size:12.5px;font-weight:700;letter-spacing:3px;color:var(--ambar);text-transform:uppercase}
   h1{font-size:clamp(34px,5.2vw,54px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin:14px 0 16px}
   .sub{color:var(--suave);font-size:17.5px;line-height:1.6;max-width:660px;margin:0 auto}
-  /* carrossel de fotos dos pilares */
-  .fotoscroll{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;
-    overflow:hidden;margin-top:30px;margin-bottom:6px;
-    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-  .fotoscroll-track{display:flex;gap:18px;width:max-content;animation:rolarfotos 32s linear infinite}
-  @media (prefers-reduced-motion: reduce){ .fotoscroll-track{animation:none} }
-  .fotoscroll figure{position:relative;flex:0 0 auto;width:260px;height:170px;border-radius:16px;
-    overflow:hidden;box-shadow:var(--sombra);margin:0;background:var(--card)}
+  /* carrossel de fotos dos pilares — avança só ao clicar, sem legenda */
+  .fotoscroll{position:relative;max-width:920px;margin:30px auto 10px}
+  .fotoscroll-viewport{overflow:hidden;border-radius:20px;box-shadow:var(--sombra);background:var(--card)}
+  .fotoscroll-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+  .fotoscroll figure{position:relative;flex:0 0 100%;width:100%;height:min(52vw,460px);margin:0}
   .fotoscroll figure img{width:100%;height:100%;object-fit:cover;display:block}
-  .fotoscroll figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px 12px;font-size:12.5px;
-    font-weight:700;color:#fff;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent)}
-  @keyframes rolarfotos{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .fotoscroll-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+    border:none;background:rgba(20,20,20,.55);color:#fff;font-size:17px;cursor:pointer;display:flex;
+    align-items:center;justify-content:center;transition:background .2s;z-index:2}
+  .fotoscroll-nav:hover{background:rgba(20,20,20,.82)}
+  .fotoscroll-nav.prev{left:14px}
+  .fotoscroll-nav.next{right:14px}
+  .fotoscroll-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+  .fotoscroll-dots button{width:8px;height:8px;border-radius:50%;border:none;background:var(--linha);
+    cursor:pointer;padding:0}
+  .fotoscroll-dots button.ativo{background:var(--amarelo);width:22px;border-radius:5px}
   /* produtos do ecossistema */
   .produtosGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
   .produtoCard{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);padding:22px}
@@ -190,19 +193,19 @@
   <div class="olho">Hack School® · Ecossistema educacional</div>
   <h1>O método que transforma a escola<br>em território de aprendizagem</h1>
 
-  <div class="fotoscroll" aria-hidden="false">
-    <div class="fotoscroll-track">
-      <figure><img src="foto-pilar-desafio.jpg" alt="Estudantes apresentando um desafio real para a turma"><figcaption>🎯 Desafio</figcaption></figure>
-      <figure><img src="foto-pilar-equipe.jpg" alt="Equipe de estudantes trabalhando juntos ao redor de um notebook"><figcaption>🤝 Trabalho em grupo</figcaption></figure>
-      <figure><img src="foto-pilar-multidisciplinar.jpg" alt="Estudantes e mentor combinando diferentes áreas de conhecimento em um projeto"><figcaption>🧩 Multidisciplinaridade</figcaption></figure>
-      <figure><img src="foto-pilar-territorio.jpg" alt="Estudantes e mentor caminhando pelo campus, representando a conexão com o território"><figcaption>📍 Território</figcaption></figure>
-      <figure><img src="foto-pilar-protagonismo.jpg" alt="Estudantes protagonizando a apresentação de sua solução"><figcaption>🚀 Protagonismo</figcaption></figure>
-      <figure aria-hidden="true"><img src="foto-pilar-desafio.jpg" alt=""><figcaption>🎯 Desafio</figcaption></figure>
-      <figure aria-hidden="true"><img src="foto-pilar-equipe.jpg" alt=""><figcaption>🤝 Trabalho em grupo</figcaption></figure>
-      <figure aria-hidden="true"><img src="foto-pilar-multidisciplinar.jpg" alt=""><figcaption>🧩 Multidisciplinaridade</figcaption></figure>
-      <figure aria-hidden="true"><img src="foto-pilar-territorio.jpg" alt=""><figcaption>📍 Território</figcaption></figure>
-      <figure aria-hidden="true"><img src="foto-pilar-protagonismo.jpg" alt=""><figcaption>🚀 Protagonismo</figcaption></figure>
+  <div class="fotoscroll">
+    <div class="fotoscroll-viewport">
+      <div class="fotoscroll-track" id="pilaresTrack">
+        <figure><img src="foto-pilar-desafio.jpg" alt="Estudantes apresentando um desafio real para a turma"></figure>
+        <figure><img src="foto-pilar-equipe.jpg" alt="Equipe de estudantes trabalhando juntos ao redor de um notebook"></figure>
+        <figure><img src="foto-pilar-multidisciplinar.jpg" alt="Estudantes e mentor combinando diferentes áreas de conhecimento em um projeto"></figure>
+        <figure><img src="foto-pilar-territorio.jpg" alt="Estudantes e mentor caminhando pelo campus, representando a conexão com o território"></figure>
+        <figure><img src="foto-pilar-protagonismo.jpg" alt="Estudantes protagonizando a apresentação de sua solução"></figure>
+      </div>
     </div>
+    <button class="fotoscroll-nav prev" type="button" aria-label="Foto anterior" onclick="moverPilares(-1)">&#10094;</button>
+    <button class="fotoscroll-nav next" type="button" aria-label="Próxima foto" onclick="moverPilares(1)">&#10095;</button>
+    <div class="fotoscroll-dots" id="pilaresDots"></div>
   </div>
 
   <p class="sub">O primeiro ecossistema educacional brasileiro que transforma escolas em Centros de Inovação, Tecnologia, Inteligência Artificial, Empreendedorismo e Desenvolvimento de Startups.</p>
@@ -246,9 +249,9 @@
         <p>Onde as melhores equipes apresentam seus projetos.</p>
       </div>
       <div class="produtoCard">
-        <img src="logo-hackai.png" alt="HACK AI">
-        <h3>Inteligência Artificial aplicada à Educação</h3>
-        <p>IA integrada a toda a jornada de aprendizagem.</p>
+        <img src="logo-hackclass.png" alt="HACK CLASS">
+        <h3>HACK como disciplina escolar</h3>
+        <p>Inovação, tecnologia e empreendedorismo integrados à grade curricular oficial da escola.</p>
       </div>
       <div class="produtoCard">
         <img src="logo-hackstartup.png" alt="HACK STARTUP">
@@ -526,5 +529,33 @@
     <p>© 2026 Hack School® — Todos os direitos reservados.</p>
   </div>
 </footer>
+
+<script>
+(function(){
+  var track = document.getElementById('pilaresTrack');
+  var dotsWrap = document.getElementById('pilaresDots');
+  if(!track || !dotsWrap) return;
+  var total = track.children.length;
+  var atual = 0;
+
+  for(var i=0;i<total;i++){
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    if(i===0) dot.className = 'ativo';
+    dot.setAttribute('aria-label','Ir para foto ' + (i+1));
+    (function(idx){ dot.addEventListener('click', function(){ irPara(idx); }); })(i);
+    dotsWrap.appendChild(dot);
+  }
+
+  function irPara(indice){
+    atual = ((indice % total) + total) % total;
+    track.style.transform = 'translateX(-' + (atual * 100) + '%)';
+    var dots = dotsWrap.children;
+    for(var j=0;j<dots.length;j++){ dots[j].className = (j===atual) ? 'ativo' : ''; }
+  }
+
+  window.moverPilares = function(delta){ irPara(atual + delta); };
+})();
+</script>
 </body>
 </html>
