@@ -79,17 +79,11 @@
   /* pilares */
   .grade5{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
   .cartao{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);
-    padding:24px 18px;position:relative}
-  .ponto{position:absolute;top:16px;left:16px;width:10px;height:10px;border-radius:50%}
-  .icone{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;margin:4px auto 12px;overflow:hidden}
+    padding:26px 18px;position:relative}
+  .icone{width:84px;height:84px;border-radius:22px;display:grid;place-items:center;margin:4px auto 14px;overflow:hidden}
   .icone img{width:100%;height:100%;object-fit:cover;display:block}
   .cartao h3{font-size:16px;font-weight:800;text-align:center;letter-spacing:-.2px}
   .cartao p{font-size:13px;color:var(--suave);text-align:center;margin-top:5px}
-  .c-azul .ponto{background:var(--azul)}
-  .c-verde .ponto{background:var(--verde)}
-  .c-laranja .ponto{background:var(--laranja)}
-  .c-vermelho .ponto{background:var(--vermelho)}
-  .c-roxo .ponto{background:var(--roxo)} .c-roxo .icone{background:#F1EBFD}
   /* trio: 3 cards curtos (ecossistema / escola&comunidade) */
   .trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
   .miniCard{background:var(--card);border:1px solid var(--linha);border-radius:18px;box-shadow:var(--sombra);padding:24px}
@@ -131,6 +125,7 @@
     border-top:5px solid var(--verde);display:flex;flex-direction:column}
   .plano.crescer{border-top-color:var(--azul)}
   .plano.elite{border-top-color:var(--ambar)}
+  .plano .logoplano{height:48px;width:auto;align-self:flex-start;margin-bottom:12px}
   .plano .selo{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--suave)}
   .plano .nomeplano{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:6px 0 4px}
   .plano .preco{font-size:31px;font-weight:800;letter-spacing:-1px}
@@ -272,13 +267,13 @@
   <div class="molde">
     <div class="cabec">
       <div class="olho">O que é o Hack School®</div>
-      <h2>Um ecossistema completo, não um evento pontual</h2>
-      <p>Uma metodologia anual que integra estudantes, professores, empresas e universidades em uma jornada real de inovação, com certificação nacional e plataforma digital própria.</p>
+      <h2>Um método estruturado, não um evento pontual</h2>
+      <p>O Hack School transforma o ano letivo inteiro numa jornada real de inovação: os estudantes enfrentam desafios verdadeiros, formam equipes multidisciplinares, contam com professores certificados e uma plataforma digital com IA — da formação das equipes até a apresentação final no Festival Estadual.</p>
     </div>
     <div class="trio">
-      <div class="miniCard"><span class="tag">Não é só</span><h3>Um hackathon</h3><p>Roda o ano letivo inteiro, com metodologia própria e progressão de desafios.</p></div>
-      <div class="miniCard"><span class="tag">Não é só</span><h3>Material didático</h3><p>Plataforma digital com IA, mentorias, formação de professores e certificação nacional.</p></div>
-      <div class="miniCard"><span class="tag">É</span><h3>Um ecossistema completo</h3><p>Estudantes, professores, empresas e universidades, conectados numa mesma jornada.</p></div>
+      <div class="miniCard"><span class="tag">Não é só</span><h3>Um hackathon</h3><p>Roda o ano letivo inteiro, com desafios progressivos, mentoria constante e etapas bem definidas — não é um evento de um fim de semana.</p></div>
+      <div class="miniCard"><span class="tag">Não é só</span><h3>Material didático</h3><p>Livro do Professor e do Aluno, plataforma digital com IA, formação certificada de mentores e avaliação estruturada dos projetos.</p></div>
+      <div class="miniCard"><span class="tag">É</span><h3>Um método completo</h3><p>Uma jornada em etapas claras: formação de equipes, desafios reais, mentoria e apresentação pública dos resultados no Festival Estadual.</p></div>
     </div>
   </div>
 </section>
@@ -291,11 +286,11 @@
       <p>Todo Hack School se apoia em cinco pilares — e cada equipe é montada para ter todos eles representados.</p>
     </div>
     <div class="grade5">
-      <div class="cartao c-azul"><span class="ponto"></span><div class="icone"><img src="icone-pilar-desafio.png" alt="Desafio"></div><h3>Desafio</h3><p>uma pergunta real, sem resposta pronta</p></div>
-      <div class="cartao c-verde"><span class="ponto"></span><div class="icone"><img src="icone-pilar-equipe.png" alt="Trabalho em grupo"></div><h3>Trabalho em grupo</h3><p>na vida, os desafios se resolvem em equipe</p></div>
-      <div class="cartao c-laranja"><span class="ponto"></span><div class="icone"><img src="icone-pilar-multidisciplinar.png" alt="Multidisciplinaridade"></div><h3>Multidisciplinaridade</h3><p>todos os conhecimentos a serviço da solução</p></div>
-      <div class="cartao c-vermelho"><span class="ponto"></span><div class="icone"><img src="icone-pilar-territorio.png" alt="Território"></div><h3>Território</h3><p>escola, bairro, cidade, universidade</p></div>
-      <div class="cartao c-roxo"><span class="ponto"></span><div class="icone"><img src="icone-pilar-protagonismo.png" alt="Protagonismo"></div><h3>Protagonismo</h3><p>o estudante levanta, pergunta e constrói</p></div>
+      <div class="cartao c-azul"><div class="icone"><img src="icone-pilar-desafio.png" alt="Desafio"></div><h3>Desafio</h3><p>uma pergunta real, sem resposta pronta</p></div>
+      <div class="cartao c-verde"><div class="icone"><img src="icone-pilar-equipe.png" alt="Trabalho em grupo"></div><h3>Trabalho em grupo</h3><p>na vida, os desafios se resolvem em equipe</p></div>
+      <div class="cartao c-laranja"><div class="icone"><img src="icone-pilar-multidisciplinar.png" alt="Multidisciplinaridade"></div><h3>Multidisciplinaridade</h3><p>todos os conhecimentos a serviço da solução</p></div>
+      <div class="cartao c-vermelho"><div class="icone"><img src="icone-pilar-territorio.png" alt="Território"></div><h3>Território</h3><p>escola, bairro, cidade, universidade</p></div>
+      <div class="cartao c-roxo"><div class="icone"><img src="icone-pilar-protagonismo.png" alt="Protagonismo"></div><h3>Protagonismo</h3><p>o estudante levanta, pergunta e constrói</p></div>
     </div>
   </div>
 </section>
@@ -414,6 +409,7 @@
     </div>
     <div class="planos">
       <div class="plano">
+        <img class="logoplano" src="logo-plano-start.png" alt="Hack Start">
         <div class="selo">Comece agora</div>
         <div class="nomeplano">Hack Start</div>
         <div class="preco">R$ 1.000<span> /mês</span></div>
@@ -427,6 +423,7 @@
         <a class="botao preto" href="mailto:hackschoolbr@gmail.com?subject=Quero%20conhecer%20o%20plano%20Hack%20Start">Quero esse plano</a>
       </div>
       <div class="plano crescer">
+        <img class="logoplano" src="logo-plano-growth.png" alt="Hack Growth">
         <div class="selo">Mais escolhido</div>
         <div class="nomeplano">Hack Growth</div>
         <div class="preco">R$ 1.500<span> /mês</span></div>
@@ -439,6 +436,7 @@
         <a class="botao amarelo" href="mailto:hackschoolbr@gmail.com?subject=Quero%20conhecer%20o%20plano%20Hack%20Growth">Quero esse plano</a>
       </div>
       <div class="plano elite">
+        <img class="logoplano" src="logo-plano-elite.png" alt="Hack Elite">
         <div class="selo">Posicionamento premium</div>
         <div class="nomeplano">Hack Elite</div>
         <div class="preco">R$ 2.000<span> /mês</span></div>
