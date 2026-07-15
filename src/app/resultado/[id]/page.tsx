@@ -5,7 +5,10 @@ import { PERFIL_ORDER, PERFIS, type PerfilKey } from "@/lib/perfis";
 import CopiarLink from "@/components/CopiarLink";
 
 export default async function ResultadoPage({ params }: { params: { id: string } }) {
-  const resultado = await prisma.testResult.findUnique({ where: { id: params.id } });
+  const resultado = await prisma.testResult.findUnique({
+    where: { id: params.id },
+    include: { user: true },
+  });
 
   if (!resultado) {
     notFound();
@@ -21,10 +24,17 @@ export default async function ResultadoPage({ params }: { params: { id: string }
   };
   const total = PERFIL_ORDER.reduce((s, k) => s + scores[k], 0) || 1;
   const linkCompartilhavel = `https://app.hackschool.app/resultado/${resultado.id}`;
+  const escolaSerie = [resultado.user.escola, resultado.user.serie].filter(Boolean).join(" · ");
 
   return (
     <main className="molde">
       <div className="olho">Seu resultado · HackPerfil</div>
+      <h1 style={{ marginBottom: 4 }}>{resultado.user.name}</h1>
+      {escolaSerie && (
+        <p className="sub" style={{ marginTop: 0 }}>
+          {escolaSerie}
+        </p>
+      )}
       <div className="card">
         <div className="perfil-hero">
           <div className="perfil-emoji">{perfil.emoji}</div>
