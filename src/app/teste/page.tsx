@@ -21,7 +21,6 @@ export default function TestePage() {
     novas[passo] = perfil;
     setRespostas(novas);
 
-    // avança automaticamente após meio segundo, para dar feedback visual da escolha
     setTimeout(() => {
       if (passo < PERGUNTAS.length - 1) {
         setPasso(passo + 1);
