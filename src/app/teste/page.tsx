@@ -53,21 +53,22 @@ export default function TestePage() {
     }
   }
 
+  function sair() {
+    signOut({ callbackUrl: "/" });
+  }
+
+  function voltar() {
+    setPasso(passo - 1);
+  }
+
   return (
     <>
       <div className="topbar">
         <div className="marca">⚡ HackPerfil</div>
         {session?.user?.name && (
-          
-            className="sair"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              signOut({ callbackUrl: "/" });
-            }}
-          >
+          <button type="button" className="sair" onClick={sair} style={{ background: "none", border: "none", cursor: "pointer" }}>
             Sair ({session.user.name.split(" ")[0]})
-          </a>
+          </button>
         )}
       </div>
       <main className="molde">
@@ -99,15 +100,9 @@ export default function TestePage() {
 
         {passo > 0 && !enviando && (
           <p className="nota">
-            
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                setPasso(passo - 1);
-              }}
-            >
+            <button type="button" onClick={voltar} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--ambar)", fontWeight: 700, fontSize: 13.5 }}>
               ← Voltar para a pergunta anterior
-            </a>
+            </button>
           </p>
         )}
       </main>
