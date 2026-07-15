@@ -1,19 +1,13 @@
-import { getServerSession } from "next-auth";
-import { redirect, notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import Link from "next/link";
-import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { PERFIL_ORDER, PERFIS, type PerfilKey } from "@/lib/perfis";
+import CopiarLink from "@/components/CopiarLink";
 
 export default async function ResultadoPage({ params }: { params: { id: string } }) {
-  const session = await getServerSession(authOptions);
-  const userId = (session?.user as { id?: string } | undefined)?.id;
-  if (!userId) {
-    redirect(`/login?callbackUrl=/resultado/${params.id}`);
-  }
-
   const resultado = await prisma.testResult.findUnique({ where: { id: params.id } });
-  if (!resultado || resultado.userId !== userId) {
+
+  if (!resultado) {
     notFound();
   }
 
@@ -26,11 +20,11 @@ export default async function ResultadoPage({ params }: { params: { id: string }
     LEADER: resultado.scoreLeader,
   };
   const total = PERFIL_ORDER.reduce((s, k) => s + scores[k], 0) || 1;
+  const linkCompartilhavel = `https://app.hackschool.app/resultado/${resultado.id}`;
 
   return (
     <main className="molde">
       <div className="olho">Seu resultado · HackPerfil</div>
-
       <div className="card">
         <div className="perfil-hero">
           <div className="perfil-emoji">{perfil.emoji}</div>
@@ -39,18 +33,15 @@ export default async function ResultadoPage({ params }: { params: { id: string }
           </div>
           <div className="perfil-tagline">{perfil.tagline}</div>
         </div>
-
         <p className="sub" style={{ marginTop: 18, textAlign: "center" }}>
           {perfil.descricao}
         </p>
-
         <div className="tagchips" style={{ justifyContent: "center" }}>
           {perfil.caracteristicas.map((c) => (
             <span key={c}>{c}</span>
           ))}
         </div>
       </div>
-
       <div className="card">
         <h2>Como você contribui para a equipe</h2>
         <ul className="lista-simples">
@@ -59,7 +50,6 @@ export default async function ResultadoPage({ params }: { params: { id: string }
           ))}
         </ul>
       </div>
-
       <div className="card">
         <h2>Sua pontuação em cada perfil</h2>
         <div className="barras">
@@ -84,7 +74,6 @@ export default async function ResultadoPage({ params }: { params: { id: string }
           partida natural dentro de uma equipe.
         </p>
       </div>
-
       <div className="card" style={{ background: "var(--amarelo-claro)", borderColor: "var(--amarelo)" }}>
         <h2>🏅 A Regra de Ouro da formação de equipes</h2>
         <p style={{ fontSize: 14, color: "var(--tinta)", lineHeight: 1.6 }}>
@@ -92,7 +81,14 @@ export default async function ResultadoPage({ params }: { params: { id: string }
           resultado para o seu Professor Mentor na hora de formar os grupos do próximo RACK.
         </p>
       </div>
-
+      <div className="card">
+        <h2>📤 Compartilhar este resultado</h2>
+        <p style={{ fontSize: 14, color: "var(--tinta)", lineHeight: 1.6, marginBottom: 14 }}>
+          Qualquer pessoa com este link consegue ver este resultado, sem precisar de login — envie para o seu
+          Professor Mentor ou para quem for montar as equipes.
+        </p>
+        <CopiarLink url={linkCompartilhavel} />
+      </div>
       <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
         <Link href="/teste" className="botao claro">
           Refazer o teste
