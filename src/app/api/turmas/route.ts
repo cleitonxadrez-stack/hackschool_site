@@ -12,11 +12,11 @@ function gerarCodigo(): string {
   return codigo;
 }
 
-async function getProfessorSession() {
+async function getProfessorSession(): Promise<{ id: string; role: string } | null> {
   const session = await getServerSession(authOptions);
   const user = session?.user as { id?: string; role?: string } | undefined;
   if (!user?.id || user.role !== "PROFESSOR") return null;
-  return user;
+  return { id: user.id, role: user.role };
 }
 
 export async function GET() {
