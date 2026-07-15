@@ -18,6 +18,11 @@ enum Perfil {
   LEADER
 }
 
+enum Role {
+  ALUNO
+  PROFESSOR
+}
+
 model User {
   id           String       @id @default(cuid())
   name         String
@@ -25,8 +30,15 @@ model User {
   passwordHash String
   escola       String?
   serie        String?
+  role         Role         @default(ALUNO)
   createdAt    DateTime     @default(now())
   results      TestResult[]
+
+  turmaId      String?
+  turma        Turma?   @relation("AlunosDaTurma", fields: [turmaId], references: [id])
+  numeroEquipe Int?
+
+  turmasCriadas Turma[] @relation("ProfessorDaTurma")
 }
 
 model TestResult {
@@ -43,4 +55,18 @@ model TestResult {
   createdAt   DateTime @default(now())
 
   @@index([userId])
+}
+
+model Turma {
+  id          String   @id @default(cuid())
+  nome        String
+  codigo      String   @unique
+  createdAt   DateTime @default(now())
+
+  professorId String
+  professor   User     @relation("ProfessorDaTurma", fields: [professorId], references: [id], onDelete: Cascade)
+
+  alunos      User[]   @relation("AlunosDaTurma")
+
+  @@index([professorId])
 }
