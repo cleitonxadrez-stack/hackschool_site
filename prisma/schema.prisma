@@ -1,0 +1,46 @@
+// Schema do banco de dados do HackPerfil — HACK SCHOOL®
+// Pensado para rodar em PostgreSQL (Vercel Postgres, Neon, Supabase, etc.)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Perfil {
+  CREATOR
+  BUILDER
+  CONNECTOR
+  TECH_MAKER
+  LEADER
+}
+
+model User {
+  id           String       @id @default(cuid())
+  name         String
+  email        String       @unique
+  passwordHash String
+  escola       String?
+  serie        String?
+  createdAt    DateTime     @default(now())
+  results      TestResult[]
+}
+
+model TestResult {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  perfil      Perfil
+  scoreCreator   Int
+  scoreBuilder   Int
+  scoreConnector Int
+  scoreTechMaker Int
+  scoreLeader    Int
+  answers     Json
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+}
